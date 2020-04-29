@@ -29,24 +29,33 @@ public class LoginController {
         String password = passwordField.getText();
 
         if (username == null || username.isEmpty()) {
+            System.out.println(loginMessage.getText());
             loginMessage.setText("Please type in a username!");
             return;
         }
 
         if (password == null || password.isEmpty()) {
-            loginMessage.setText("Password cannot be empty");
+            loginMessage.setText("Please type in a password");
             return;
         }
 
         if (username.equals("user") && password.equals("user")) {
-            loginMessage.setText("Logged in as user!");
+            try {
+                Stage stage = (Stage) loginMessage.getScene().getWindow();
+                Parent UserMenu = FXMLLoader.load(getClass().getClassLoader().getResource("umenu.fxml"));
+                Scene scene = new Scene(UserMenu, 600, 400);
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             return;
         }
 
         if (username.equals("librarian") && password.equals("librarian")) {
             try {
                 Stage stage = (Stage) loginMessage.getScene().getWindow();
-                Parent TeacherMenu = FXMLLoader.load(getClass().getResource("tmenu.fxml"));
+                Parent TeacherMenu = FXMLLoader.load(getClass().getClassLoader().getResource("tmenu.fxml"));
                 Scene scene = new Scene(TeacherMenu, 600, 400);
                 stage.setScene(scene);
             } catch (IOException e) {
@@ -57,6 +66,6 @@ public class LoginController {
         }
 
 
-        loginMessage.setText("Incorrect login!");
+        loginMessage.setText("Incorrect credentials!");
     }
 }

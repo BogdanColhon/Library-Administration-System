@@ -1,0 +1,23 @@
+[
+  {
+    "username": "mars_cosmin",
+    "role": "librarian",
+    "password": "parola1x"
+  },
+  {
+    "username": "colhon_bogdan",
+    "role": "user",
+    "password": "124x"
+  },
+  {
+    "username": "a",
+    "role": "librarian",
+    "password": "b"
+  },
+  {
+    "username": "casian_ciuban",
+    "role": "user",
+    "password": "125x"
+  }
+]
+

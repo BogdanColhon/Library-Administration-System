@@ -1,5 +1,4 @@
 package Controllers;
-import com.sun.deploy.security.SelectableSecurityManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,17 +15,19 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 
 
 public class LoginController {
 
     @FXML
-    public Text loginMessage;
+    private Text loginMessage;
     @FXML
-    public PasswordField passwordField;
+    private PasswordField passwordField;
     @FXML
-    public TextField usernameField;
+    private TextField usernameField;
 
     @FXML
     public void initialize() {
@@ -34,6 +35,25 @@ public class LoginController {
     }
 
     @FXML
+    private String algorithm="SHA-256";
+    private static String generateHash(String data, String algorithm) throws NoSuchAlgorithmException {
+        MessageDigest digest=MessageDigest.getInstance(algorithm);
+        digest.reset();
+        byte[] hash=digest.digest(data.getBytes());
+        return  bytesToStringHex(hash);
+    }
+    private final static char[] hexArray="0123456789ABCDEF".toCharArray();
+    private final static String bytesToStringHex(byte[] bytes) {
+        char[] hexChars=new char[bytes.length*2];
+        for(int j=0;j<bytes.length;j++)
+        {
+            int v=bytes[j] & 0xFF;
+            hexChars[j*2]=hexArray[v>>>4];
+            hexChars[j*2+1]=hexArray[v & 0x0F];
+        }
+        return new String(hexChars);
+    }
+
     public void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -61,7 +81,8 @@ public class LoginController {
                 //System.out.println(obj.get("username") + " - " + obj.get("password"));
                 if(obj.get("username").equals(username))
                 {
-                    if (obj.get("password").equals(password)) {
+
+                    if (obj.get("password").equals(generateHash(password,algorithm))) {
                         if (obj.get("role").equals("librarian")) {
                             try {
                                 Stage stage = (Stage) loginMessage.getScene().getWindow();
@@ -98,9 +119,9 @@ public class LoginController {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
-
-
 
 
         loginMessage.setText("Incorrect credentials!");

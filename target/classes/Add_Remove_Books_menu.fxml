@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddRemoveBooksMenu">
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints halignment="LEFT" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="150" />
+      <ColumnConstraints halignment="LEFT" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="550.0" />
+   </columnConstraints>
+   <children>
+      <Label text="Title:" textAlignment="CENTER" GridPane.rowIndex="1">
+         <padding>
+            <Insets left="10.0" />
+         </padding></Label>
+      <Label text="Author:" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <Label text="Publishing house:" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <Label text="Date:" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <Label text="Category:" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="authorField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="publishinghouseField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="dateField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+      <ComboBox fx:id="selectcategory" promptText="Select a category" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Adventure" />
+               <String fx:value="Detective" />
+               <String fx:value="War" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+
+      <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <children>
+            <Text fx:id="message" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+            <Button mnemonicParsing="false" onAction="#AddBookAction" text="Add Book" />
+            <Button mnemonicParsing="false" text="Remove Book" />
+         </children>
+      </HBox>
+   </children>
+</GridPane>

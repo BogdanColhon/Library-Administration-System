@@ -1,0 +1,23 @@
+[
+  {
+    "username": "mars_cosmin",
+    "role": "librarian",
+    "password": "9573BFB179AFA4CEBE1ADCD7C64C45C31ED3A3B72EE262E1196D53BAE8FFE3D5"
+  },
+  {
+    "username": "colhon_bogdan",
+    "role": "user",
+    "password": "03101E43E6DC1F4518ABA52A9EF2093D5F54DBE417A75C196C61A0018DC9DEFF"
+  },
+  {
+    "username": "a",
+    "role": "librarian",
+    "password": "3E23E8160039594A33894F6564E1B1348BBD7A0088D42C4ACB73EEAED59C009D"
+  },
+  {
+    "username": "casian_ciuban",
+    "role": "user",
+    "password": "02050475DF7E6509BCEF694F1ADD0FDBDF11E049149FF9D834BB0BDE4083C7B5"
+  }
+]
+

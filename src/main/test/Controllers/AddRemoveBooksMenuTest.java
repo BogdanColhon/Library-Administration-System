@@ -108,7 +108,73 @@ public class AddRemoveBooksMenuTest {
         }
 
         //System.out.println(am_gasit);
-        Assert.assertTrue(am_gasit==1);
+        assertEquals(1, am_gasit);
 
+    }
+
+    @Test
+    public void testAddExistingBook(){
+
+        // Citesc din fisier si voi folosi prima carte citita
+        // Daca amountul ei va creste cu 1 dupa apel atunci metoda functioneaza corect
+        // Pt a verifica voi citi din nou fisierul intr-o lista noua
+        // La final voi rescrie fisierul cu lista initiala, ca acesta sa ramana nemodificat dupa acest test
+
+        JSONArray list = new JSONArray();
+        JSONParser parser = new JSONParser();
+        try( Reader reader = new FileReader("src\\main\\test\\resources\\LibraryBooks.json")){
+
+            JSONArray jsonArray = (JSONArray) parser.parse(reader);
+
+            Iterator<Object> it = jsonArray.iterator();
+            while (it.hasNext()) {
+                JSONObject obj = (JSONObject) it.next();
+                list.add(obj);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        JSONObject first;
+        first = (JSONObject) list.get(0);
+        //System.out.println(first.get("amount"));
+
+        ARBM.AddInFile(first.get("title").toString(),first.get("author").toString(),first.get("publishinghouse").toString(),first.get("date").toString(),first.get("category").toString(),"src\\main\\test\\resources\\LibraryBooks.json");
+
+        // A doua citire
+        JSONArray list1 = new JSONArray();
+        JSONParser parser1 = new JSONParser();
+        try( Reader reader1 = new FileReader("src\\main\\test\\resources\\LibraryBooks.json")){
+
+            JSONArray jsonArray1 = (JSONArray) parser1.parse(reader1);
+
+            Iterator<Object> it1 = jsonArray1.iterator();
+            while (it1.hasNext()) {
+                JSONObject obj1 = (JSONObject) it1.next();
+                list1.add(obj1);
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        JSONObject first1;
+        first1 = (JSONObject) list1.get(0);
+        //System.out.println(first1.get("amount"));
+
+        // Pun in fisier prima lista pt a ramane neschimbat
+        try (FileWriter file = new FileWriter("src\\main\\test\\resources\\LibraryBooks.json")) {
+            file.write(list.toJSONString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assertEquals(first.get("amount").hashCode() + 1,first1.get("amount").hashCode());
     }
 }

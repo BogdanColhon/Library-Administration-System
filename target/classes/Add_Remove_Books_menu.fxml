@@ -59,9 +59,9 @@
 
       <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <children>
-            <Text fx:id="message" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
             <Button mnemonicParsing="false" onAction="#AddBookAction" text="Add Book" />
-            <Button mnemonicParsing="false" text="Remove Book" />
+            <Text fx:id="message" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+            
          </children>
       </HBox>
    </children>

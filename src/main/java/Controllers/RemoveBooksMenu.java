@@ -29,7 +29,7 @@ public class RemoveBooksMenu {
     @FXML
     public Button back;
     @FXML
-
+private   int rez=0;
     public void Back() {
         try {
             Stage stage = (Stage) back.getScene().getWindow();
@@ -41,7 +41,7 @@ public class RemoveBooksMenu {
         }
     }
 
-    public void RemoveAllFromFile(String title, String author, String date, String path) throws FileNotFoundException {
+    public int RemoveAllFromFile(String title, String author, String date, String path) throws FileNotFoundException {
 
         JSONArray list = new JSONArray();
         JSONParser parser = new JSONParser();
@@ -64,16 +64,14 @@ public class RemoveBooksMenu {
 
         Iterator<Object> it = list.iterator();
         JSONObject obj1 = new JSONObject();
+        int gasit=0;
         while (it.hasNext()) {
             JSONObject obj = (JSONObject) it.next();
-
-            //System.out.println(obj);
             if(title.equals(obj.get("title")) && author.equals(obj.get("author")) && date.equals(obj.get("date")))
             {
                 obj1=obj;
+                gasit=1;
             }
-            else
-                message.setText("Book does not exist!");
 
         }
         list.remove(obj1);
@@ -83,9 +81,10 @@ public class RemoveBooksMenu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return gasit;
     }
 
-    public void RemoveFromFile(String title, String author, String date, String path) throws FileNotFoundException {
+    public int RemoveFromFile(String title, String author, String date, String path) throws FileNotFoundException {
 
 
         JSONArray list = new JSONArray();
@@ -109,16 +108,25 @@ public class RemoveBooksMenu {
 
         Iterator<Object> it = list.iterator();
         JSONObject obj1 = new JSONObject();
+        int gasit = 0;
+        int amo=0;
         while (it.hasNext()) {
             JSONObject obj = (JSONObject) it.next();
 
             //System.out.println(obj);
             if(title.equals(obj.get("title")) && author.equals(obj.get("author")) && date.equals(obj.get("date")))
             {
-                obj.replace("amount", ((Long) obj.get("amount") - 1));
-            }
-            else {
-                message.setText("Book does not exist!");
+
+                if((Long) obj.get("amount")<=0)
+                {
+                  amo=0;//daca cantitatea este 0 dar cartea este gasita returnam 1 si afisam rezultatul corespunzator
+                  gasit=1;
+                }
+                else {
+                    obj.replace("amount", ((Long) obj.get("amount") - 1));
+                    gasit = 1; //daca cantitatea este mai mare de 0, amo=1 si cartea este gasita, returnam 2 si afisam rezultatul corespunzator
+                    amo=1;
+                }//daca cartea nu este gasita, rezulta ca amo=0 si gasit=0, returnam 0 si afisam mesajul corespunzator
             }
         }
         //System.out.println(list);
@@ -127,6 +135,7 @@ public class RemoveBooksMenu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return gasit+amo;
     }
     @FXML
         public void RemoveAllBooksAction () throws FileNotFoundException {
@@ -148,11 +157,10 @@ public class RemoveBooksMenu {
             message.setText("Please type in a date!");
             return;
         }
-
-        RemoveAllFromFile(titleField.getText(), authorField.getText(), dateField.getText(),"src\\main\\resources\\LibraryBooks.json");
-
+        if (RemoveAllFromFile(titleField.getText(), authorField.getText(), dateField.getText(), "src\\main\\resources\\LibraryBooks.json") == 0) {
+            message.setText("Book does not exist!");
+        }
     }
-
     @FXML
     public void RemoveBookAction () throws FileNotFoundException {
 
@@ -176,12 +184,16 @@ public class RemoveBooksMenu {
             return;
         }
 
-        RemoveFromFile(titleField.getText(), authorField.getText(), dateField.getText(),"src\\main\\resources\\LibraryBooks.json");
+        rez=RemoveFromFile(titleField.getText(), authorField.getText(), dateField.getText(), "src\\main\\resources\\LibraryBooks.json");
+        if(rez==0)
+            message.setText("Book does not exist!");
+        else
+            if(rez==1)
+            message.setText("No copies left");
+
 
     }
-
-
-    }
+}
 
 
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewLibraryMenu">
+   <children>
+      <TextField fx:id="SearchBar" layoutX="63.0" layoutY="38.0" prefHeight="26.0" prefWidth="460.0" promptText="Search..." />
+      <Button fx:id="Back" onAction="#Back"  layoutX="63.0" layoutY="460.0" mnemonicParsing="false" text="Back" />
+      <ListView fx:id="Display" layoutX="63.0" layoutY="83.0" prefHeight="360.0" prefWidth="590.0" />
+      <Button fx:id="Search" layoutX="530.0" layoutY="38.0" mnemonicParsing="false" text="Search" />
+      <Button fx:id="Filter" layoutX="610.0" layoutY="38.0" mnemonicParsing="false" text="Filter" />
+   </children>
+</AnchorPane>

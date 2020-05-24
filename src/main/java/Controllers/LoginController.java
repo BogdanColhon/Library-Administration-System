@@ -22,6 +22,7 @@ import java.util.Iterator;
 
 public class LoginController {
 
+    public static String UsernameGlobal = null;
     @FXML
     private Text loginMessage;
     @FXML
@@ -57,6 +58,7 @@ public class LoginController {
     public void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
+        UsernameGlobal = username;
 
         if (username == null || username.isEmpty()) {
             System.out.println(loginMessage.getText());

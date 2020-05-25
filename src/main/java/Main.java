@@ -31,10 +31,6 @@ public class Main extends Application{
     }
     public void start(Stage primaryStage) throws Exception
     {
-        FileUtils.copyURLToFile(Main.class.getClassLoader().getResource("users.json"), FileSystemService.getPathToFile("src/main", "users.json").toFile());
-        FileUtils.copyURLToFile(Main.class.getClassLoader().getResource("LibraryBooks.json"), FileSystemService.getPathToFile("src/main", "LibraryBooks.json").toFile());
-        FileUtils.copyURLToFile(Main.class.getClassLoader().getResource("UsersBooks.json"), FileSystemService.getPathToFile("src/main", "UsersBooks.json").toFile());
-
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Library Administration");
         primaryStage.setScene(new Scene(root, 300, 275));

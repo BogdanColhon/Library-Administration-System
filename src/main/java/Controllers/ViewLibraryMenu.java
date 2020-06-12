@@ -129,6 +129,7 @@ public class ViewLibraryMenu {
                     cartea.put("publishinghouse",obj.get("publishinghouse").toString());
                     cartea.put("category",obj.get("category").toString());
                     cartea.put("time",time);
+                    cartea.put("message","0");
                 }
                 list.add(obj);
             }

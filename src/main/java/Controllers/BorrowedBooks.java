@@ -60,6 +60,7 @@ public class BorrowedBooks implements Initializable {
 
     @FXML
     private void DisplayBorrowedBooks(){
+        String message = "PLEASE RETURN THIS BOOK !!!";
         String username = UsernameGlobal;
         Display.getItems().clear();
 
@@ -89,6 +90,9 @@ public class BorrowedBooks implements Initializable {
                 while(i.hasNext()){
                     JSONObject obj = (JSONObject) i.next();
                     String aux = obj.get("title").toString() + " - " + obj.get("author").toString();
+                    if(obj.get("message").toString().equals("1")){
+                        aux = aux + "       " + message;
+                    }
                     long x = calculateRemainTime(obj.get("time").toString());
                     int days = (int) (x / 86400);
                     int hours = (int) ((x - (days * 86400))/3600);

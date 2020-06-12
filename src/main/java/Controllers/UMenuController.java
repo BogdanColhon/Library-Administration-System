@@ -31,4 +31,15 @@ public class UMenuController {
         }
     }
 
+    @FXML
+    public void BorrowedBooksAction(){
+        try {
+            Stage stage = (Stage) borrowed.getScene().getWindow();
+            Parent BorrowedBooks = FXMLLoader.load(getClass().getClassLoader().getResource("Borrowed_Books.fxml"));
+            Scene scene = new Scene(BorrowedBooks, 725, 525);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -34,7 +34,7 @@
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                             <children>
-                                                <Button fx:id="borrowed" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" text="Borrowed Books">
+                                                <Button onAction="#BorrowedBooksAction" fx:id="borrowed" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" text="Borrowed Books">
                                                     <font>
                                                         <Font size="16.0" />
                                                     </font>

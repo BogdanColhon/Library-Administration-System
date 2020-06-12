@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 import static Controllers.LoginController.UsernameGlobal;
 
@@ -35,25 +36,25 @@ public class BorrowedBooks implements Initializable {
     @FXML
     private ListView Display;
 
-    private int CalculateTimeLeft(String y){
-        String[] x=y.split("\\W");
-        int year = Integer.parseInt(x[0]);
-        int month = Integer.parseInt(x[1]);
-        int day = Integer.parseInt(x[2]);
-        int hour = Integer.parseInt(x[3]);
-        int min = Integer.parseInt(x[4]);
-        int second = Integer.parseInt(x[5]);
-        //System.out.println(year + " " + month + " " + day + " " + hour + " " + min + " " + second);
+    public long calculateRemainTime(String borrowed_date){
 
-        String time = new SimpleDateFormat("yyyy MM dd HH mm ss").format(Calendar.getInstance().getTime());
-        String[] z=time.split("\\W");
-        int current_year = Integer.parseInt(z[0]);
-        int current_month = Integer.parseInt(z[1]);
-        int current_day = Integer.parseInt(z[2]);
-        int current_hour = Integer.parseInt(z[3]);
-        int current_min = Integer.parseInt(z[4]);
-        int current_second = Integer.parseInt(z[5]);
-        //System.out.println("AAAAAAAA\n" + current_year+ " " + current_month + " " + current_day + " " + current_hour + " " + current_min + " " + current_second);
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy MM dd HH mm ss");
+
+        java.util.Date borrowedDate;
+        Calendar current = Calendar.getInstance();
+        java.util.Date currentDate;
+        String current_date = format.format(current.getTime());
+        try {
+            borrowedDate = format.parse(borrowed_date);
+            currentDate = format.parse(current_date);
+            long diffInMillies = currentDate.getTime() - borrowedDate.getTime();
+            long diffence_in_seconds = TimeUnit.SECONDS.convert(diffInMillies,TimeUnit.MILLISECONDS);
+            // 14 Days in seconds: 1209600
+            return 1209600-diffence_in_seconds;
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
@@ -88,8 +89,14 @@ public class BorrowedBooks implements Initializable {
                 while(i.hasNext()){
                     JSONObject obj = (JSONObject) i.next();
                     String aux = obj.get("title").toString() + " - " + obj.get("author").toString();
-                    Display.getItems().add(aux);
-                    CalculateTimeLeft(obj.get("time").toString());
+                    long x = calculateRemainTime(obj.get("time").toString());
+                    int days = (int) (x / 86400);
+                    int hours = (int) ((x - (days * 86400))/3600);
+                    int min = (int) ((x - (days * 86400) - (hours * 3600))/60);
+                    int sec = (int) (x - (days * 86400) - (hours * 3600) - (min * 60));
+                    String aux1 ="Remain time: " + days + " days " + hours + " hours " + min + " min " + sec + " sec";
+                    Display.getItems().addAll(aux,aux1);
+
                 }
             }
         }

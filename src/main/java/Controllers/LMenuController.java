@@ -15,7 +15,8 @@ public class LMenuController {
     public Button add;
     @FXML
     public Button removemenu;
-
+    @FXML
+    public Button viewusers;
     @FXML
     public void AddRemoveButtonAction() {
         try {
@@ -39,6 +40,19 @@ public class LMenuController {
 
             return;
         }
+    public void ViewUsersButtonAction() {
+        try {
+            Stage stage = (Stage) viewusers.getScene().getWindow();
+            Parent AddRemoveMenu = FXMLLoader.load(getClass().getClassLoader().getResource("View_Users.fxml"));
+            Scene scene = new Scene(AddRemoveMenu, 800, 400);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     }
 

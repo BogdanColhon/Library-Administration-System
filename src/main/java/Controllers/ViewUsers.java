@@ -95,13 +95,10 @@ public class ViewUsers {
                 String aux1 = aux + " - " + obj.get("title").toString() + " - " + obj.get("author").toString();
                 long x = calculateRemainTime(obj.get("time").toString());
                 int days = (int) (x / 86400);
-                int hours = (int) ((x - (days * 86400)) / 3600);
-                int min = (int) ((x - (days * 86400) - (hours * 3600)) / 60);
-                int sec = (int) (x - (days * 86400) - (hours * 3600) - (min * 60));
                 String aux2 = aux1 + " - " + "Remain time: " + days + " days ";
                 Button notify = new Button("Notify");
                 afis.addAll(aux2, notify);
-                
+
 
             }
 

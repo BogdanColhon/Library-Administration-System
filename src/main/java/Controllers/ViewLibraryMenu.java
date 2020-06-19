@@ -36,15 +36,18 @@ public class ViewLibraryMenu {
     @FXML
     private Button Back;
     @FXML
-    private TextField SearchBar;
+    TextField SearchBar;
     @FXML
-    private ListView Display;
+    ListView Display;
     @FXML
     private Button Search;
     @FXML
-    private ComboBox Filter;
+    ComboBox Filter;
     @FXML
-    private Label Message;
+    Label Message;
+
+    String Path1 = "src\\main\\resources\\LibraryBooks.json";
+    String Path2 = "src\\main\\resources\\UsersBooks.json";
 
     @FXML
     public void Back() {
@@ -217,7 +220,7 @@ public class ViewLibraryMenu {
 
         String title = SearchBar.getText();
         String filter = (String) Filter.getValue();
-        JSONArray list = DisplayBooks(title,"src\\main\\resources\\LibraryBooks.json",filter);
+        JSONArray list = DisplayBooks(title,Path1,filter);
         ObservableList afis = Display.getItems();
         afis.clear();
 
@@ -232,7 +235,7 @@ public class ViewLibraryMenu {
                 public void handle(ActionEvent event) {
                     String title = obj.get("title").toString();
                     String author = obj.get("author").toString();
-                    if(BorrowBook(title,author,"src\\main\\resources\\LibraryBooks.json","src\\main\\resources\\UsersBooks.json") == 0){
+                    if(BorrowBook(title,author,Path1,Path2) == 0){
                         Message.setText("You already borrowed this book!");
                     }
                     else{

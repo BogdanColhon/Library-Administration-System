@@ -1,19 +1,17 @@
-import javax.crypto.*;
-import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
+package Controllers;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Criptare {
        public static void main(String[]args) throws Exception{
-               String data="parola1x";
+               String data="1";
                String algorithm="SHA-256";
                String codificat;
                System.out.println("SHA-256 Hash:"+generateHash(data,algorithm));
        }
 
-        private static String generateHash(String data, String algorithm) throws NoSuchAlgorithmException {
+        static String generateHash(String data, String algorithm) throws NoSuchAlgorithmException {
                MessageDigest digest=MessageDigest.getInstance(algorithm);
                digest.reset();
                byte[] hash=digest.digest(data.getBytes());

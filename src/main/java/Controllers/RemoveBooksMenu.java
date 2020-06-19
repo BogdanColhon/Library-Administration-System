@@ -19,13 +19,13 @@ import java.util.Objects;
 
 public class RemoveBooksMenu {
     @FXML
-    private TextField titleField;
+    TextField titleField;
     @FXML
-    private TextField authorField;
+   TextField authorField;
     @FXML
-    private TextField dateField;
+    TextField dateField;
     @FXML
-    private Text message;
+    Text message;
     @FXML
     public Button back;
     @FXML

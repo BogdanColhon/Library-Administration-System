@@ -15,17 +15,17 @@ import java.util.*;
 
 public class AddRemoveBooksMenu  {
     @FXML
-    private TextField titleField;
+    TextField titleField;
     @FXML
-    private TextField authorField;
+    TextField authorField;
     @FXML
-    private TextField publishinghouseField;
+    TextField publishinghouseField;
     @FXML
-    private TextField dateField;
+    TextField dateField;
     @FXML
-    private ComboBox selectcategory;
+    ComboBox selectcategory;
     @FXML
-    private Text message;
+    Text message;
 
     public void AddInFile(String title, String author, String publishinghouse, String date, String category, String path){
 

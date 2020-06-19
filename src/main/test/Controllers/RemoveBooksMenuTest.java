@@ -1,5 +1,7 @@
 package Controllers;
 
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -8,18 +10,23 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.testfx.framework.junit.ApplicationTest;
 
 import java.io.*;
 import java.util.Iterator;
 
 import static org.junit.Assert.*;
 
-public class RemoveBooksMenuTest {
+public class RemoveBooksMenuTest extends ApplicationTest {
 
     RemoveBooksMenu RBM;
     @Before
     public void setUp() throws Exception {
         RBM = new RemoveBooksMenu();
+        RBM.titleField=new TextField();
+        RBM.authorField=new TextField();
+        RBM.dateField=new TextField();
+        RBM.message=new Text();
     }
 
     @After
@@ -181,5 +188,55 @@ public class RemoveBooksMenuTest {
         }
 
         Assert.assertEquals(amount-1 , amount1);
+    }
+
+    @Test
+    public void testNoFildsMassagesRemoveAllBooksAction() throws FileNotFoundException {
+
+        RBM.titleField.setText("");
+        RBM.RemoveAllBooksAction ();
+        assertEquals("Please type in a title!",RBM.message.getText());
+
+        RBM.titleField.setText("1");
+        RBM.authorField.setText("");
+        RBM.RemoveAllBooksAction ();
+        assertEquals("Please type in the author!",RBM.message.getText());
+
+        RBM.titleField.setText("1");
+        RBM.authorField.setText("2");
+        RBM.dateField.setText("");
+        RBM.RemoveAllBooksAction ();
+        assertEquals("Please type in a date!",RBM.message.getText());
+
+        /*RBM.titleField.setText("1");
+        RBM.authorField.setText("2");
+        RBM.dateField.setText("3");
+        RBM.RemoveAllBooksAction ();
+        assertEquals("Book does not exist!",RBM.message.getText());*/
+    }
+
+    @Test
+    public void testNoFildsMassagesRemoveBookAction() throws FileNotFoundException {
+
+        RBM.titleField.setText("");
+        RBM.RemoveBookAction ();
+        assertEquals("Please type in a title!",RBM.message.getText());
+
+        RBM.titleField.setText("1");
+        RBM.authorField.setText("");
+        RBM.RemoveBookAction ();
+        assertEquals("Please type in the author!",RBM.message.getText());
+
+        RBM.titleField.setText("1");
+        RBM.authorField.setText("2");
+        RBM.dateField.setText("");
+        RBM.RemoveBookAction ();
+        assertEquals("Please type in a date!",RBM.message.getText());
+
+        /*RBM.titleField.setText("1");
+        RBM.authorField.setText("2");
+        RBM.dateField.setText("3");
+        RBM.RemoveBookAction ();
+        assertEquals("Book does not exist!",RBM.message.getText());*/
     }
 }

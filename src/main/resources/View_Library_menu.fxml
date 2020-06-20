@@ -4,14 +4,15 @@
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewLibraryMenu">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewLibraryMenu">
    <children>
-      <TextField fx:id="SearchBar" layoutX="63.0" layoutY="38.0" prefHeight="26.0" prefWidth="460.0" promptText="Search..." />
-      <Button fx:id="Back" layoutX="63.0" layoutY="460.0" mnemonicParsing="false" onAction="#Back" text="Back" />
-      <Button fx:id="Search" layoutX="542.0" layoutY="38.0" mnemonicParsing="false" onAction="#Search" text="Search" />
-      <ListView fx:id="Display" layoutX="63.0" layoutY="88.0" prefHeight="350.0" prefWidth="460.0" />
-      <ComboBox fx:id="Filter" layoutX="542.0" layoutY="88.0" prefWidth="150.0" promptText="Category...">
+      <TextField fx:id="SearchBar" layoutX="62.0" layoutY="75.0" prefHeight="26.0" prefWidth="460.0" promptText="Search..." />
+      <Button fx:id="Back" layoutX="62.0" layoutY="391.0" mnemonicParsing="false" onAction="#Back" text="Back" />
+      <Button fx:id="Search" layoutX="542.0" layoutY="76.0" mnemonicParsing="false" onAction="#Search" text="Search" />
+      <ListView fx:id="Display" layoutX="62.0" layoutY="113.0" prefHeight="264.0" prefWidth="460.0" />
+      <ComboBox fx:id="Filter" layoutX="542.0" layoutY="113.0" prefWidth="150.0" promptText="Category...">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="All" />
@@ -21,6 +22,14 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label fx:id="Message" layoutX="167.0" layoutY="463.0" prefHeight="26.0" prefWidth="250.0" />
+      <Label fx:id="Message" layoutX="167.0" layoutY="391.0" prefHeight="26.0" prefWidth="250.0" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="62.0" layoutY="28.0" text="Search Books" textFill="CHOCOLATE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

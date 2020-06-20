@@ -54,7 +54,7 @@ public class ViewLibraryMenu {
         try {
             Stage stage = (Stage) Back.getScene().getWindow();
             Parent BackMenu = FXMLLoader.load(getClass().getClassLoader().getResource("umenu.fxml"));
-            Scene scene = new Scene(BackMenu, 600, 400);
+            Scene scene = new Scene(BackMenu, 600, 280);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

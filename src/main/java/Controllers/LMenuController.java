@@ -22,7 +22,7 @@ public class LMenuController {
         try {
             Stage stage = (Stage) add.getScene().getWindow();
             Parent AddRemoveMenu = FXMLLoader.load(getClass().getClassLoader().getResource("Add_Remove_Books_menu.fxml"));
-            Scene scene = new Scene(AddRemoveMenu, 750, 300);
+            Scene scene = new Scene(AddRemoveMenu, 750, 320);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class LMenuController {
             try {
                 Stage stage = (Stage) removemenu.getScene().getWindow();
                 Parent AddRemoveMenu = FXMLLoader.load(getClass().getClassLoader().getResource("Remove_Books_menu.fxml"));
-                Scene scene = new Scene(AddRemoveMenu, 500, 300);
+                Scene scene = new Scene(AddRemoveMenu, 400, 320);
                 stage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();

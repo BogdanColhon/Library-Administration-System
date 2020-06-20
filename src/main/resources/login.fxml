@@ -1,32 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Text?>
-<?import java.net.URL?>
+<?import javafx.scene.text.*?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="400" prefWidth="600"
-          vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea"
-          fx:controller="Controllers.LoginController">
+<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" styleClass="root" stylesheets="@styles.css" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
 <padding>
-    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
 </padding>
-<Text fx:id="loginMessage" text="Login" style="-fx-font-weight: bold" GridPane.columnIndex="0" GridPane.columnSpan="2"
-      GridPane.rowIndex="0"/>
+<Text fx:id="loginMessage" fill="CHOCOLATE" style="-fx-font-weight: bold" text="Login" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+      <font>
+         <Font size="20.0" />
+      </font></Text>
 
-<Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+<Label text="Username:" textFill="DARKSLATEGRAY" GridPane.columnIndex="0" GridPane.rowIndex="1">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font></Label>
 
-<TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+<TextField fx:id="usernameField" prefHeight="25.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-<Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+<Label text="Password:" textFill="DARKSLATEGRAY" GridPane.columnIndex="0" GridPane.rowIndex="2">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font></Label>
 
-<PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+<PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-        <Button onAction="#handleLoginButtonAction" text="Login"></Button>
+        <Button fx:id="login" onAction="#handleLoginButtonAction" stylesheets="@styles.css" text="LOGIN" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font></Button>
     </HBox>
+   <BorderPane prefHeight="40.0" prefWidth="92.0" />
+   <columnConstraints>
+      <ColumnConstraints maxWidth="226.0" minWidth="81.0" prefWidth="138.0" />
+      <ColumnConstraints maxWidth="268.0" minWidth="123.0" prefWidth="211.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>

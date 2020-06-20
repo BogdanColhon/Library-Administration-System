@@ -2,58 +2,47 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LMenuController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-         <children>
-            <SplitPane dividerPositions="0.5" layoutX="8.0" orientation="VERTICAL" prefHeight="398.0" prefWidth="160.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <Label layoutX="11.0" layoutY="84.0" text="Librarian Menu">
-                           <font>
-                              <Font name="System Bold" size="19.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <SplitPane dividerPositions="0.5, 0.5" layoutX="-1.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
-                          <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <Button fx:id="viewusers" layoutX="5.0" layoutY="30.0" mnemonicParsing="false" onAction="#ViewUsersButtonAction" text="View/Notify Users">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-                              <SplitPane dividerPositions="0.4936708860759494" prefHeight="160.0" prefWidth="200.0">
-                                <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                       <children>
-                                           <Button  fx:id="add" layoutX="16.0" layoutY="24.0" mnemonicParsing="false" onAction="#AddRemoveButtonAction" text="Add&#10;Book" />
-                                       </children>
-                                    </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                       <children>
-                                          <Button  fx:id="removemenu" layoutX="9.0" layoutY="24.0" mnemonicParsing="false" onAction="#RemoveButtonAction" text="Remove&#10;Book" />
-                                       </children>
-                                    </AnchorPane>
-                                </items>
-                              </SplitPane>
-                          </items>
-                        </SplitPane>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-         </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-  </items>
-</SplitPane>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LMenuController">
+    <children>
+        <VBox prefHeight="400.0" prefWidth="156.0" styleClass="panou_stanga" stylesheets="@styles.css">
+            <children>
+                <VBox alignment="CENTER" prefHeight="97.0" prefWidth="163.0">
+                    <children>
+                        <Label prefHeight="73.0" prefWidth="101.0" text="  Librarian &#10;     menu" textFill="LIGHTBLUE">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font></Label>
+                        <Line endX="80.0" startX="-80.0" stroke="LIGHTBLUE" strokeWidth="3.0" />
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER" prefHeight="72.0" prefWidth="163.0">
+                    <children>
+                        <Button fx:id="viewusers" mnemonicParsing="false" onAction="#ViewUsersButtonAction" prefHeight="29.0" prefWidth="135.0" stylesheets="@styles2.css" text="View/Notify Users">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font></Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="62.0" prefWidth="154.0" spacing="15">
+                    <children>
+                        <Button fx:id="add" mnemonicParsing="false" onAction="#AddRemoveButtonAction" stylesheets="@styles2.css" text="Add&#10;Book">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font></Button>
+                        <Button fx:id="removemenu" mnemonicParsing="false" onAction="#RemoveButtonAction" stylesheets="@styles2.css" text="Remove&#10;Book">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font></Button>
+                    </children></HBox>
+            </children>
+        </VBox>
+        <Label prefHeight="162.0" prefWidth="435.0" text="&#9;&#10;&#10;&#9;&#10;&#9;“Books are the quietest and most constant of friends;&#10;       they are the most accessible and wisest of counselors,&#10;       and the most patient of teachers.”&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;– Charles W. Eliot" textFill="DARKSLATEGRAY">
+            <font>
+                <Font name="System Bold Italic" size="15.0" />
+            </font>
+        </Label>
+    </children>
+</HBox>

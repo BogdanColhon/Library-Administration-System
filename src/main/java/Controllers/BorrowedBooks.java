@@ -113,7 +113,7 @@ public class BorrowedBooks implements Initializable {
         try {
             Stage stage = (Stage) back.getScene().getWindow();
             Parent BackMenu = FXMLLoader.load(getClass().getClassLoader().getResource("umenu.fxml"));
-            Scene scene = new Scene(BackMenu, 600, 400);
+            Scene scene = new Scene(BackMenu, 600, 280);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

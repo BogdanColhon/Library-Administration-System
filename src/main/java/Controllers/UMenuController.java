@@ -24,7 +24,7 @@ public class UMenuController {
         try {
             Stage stage = (Stage) viewbutton.getScene().getWindow();
             Parent ViewLibraryMenu = FXMLLoader.load(getClass().getClassLoader().getResource("View_Library_menu.fxml"));
-            Scene scene = new Scene(ViewLibraryMenu, 725, 525);
+            Scene scene = new Scene(ViewLibraryMenu, 725, 475);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class UMenuController {
         try {
             Stage stage = (Stage) borrowed.getScene().getWindow();
             Parent BorrowedBooks = FXMLLoader.load(getClass().getClassLoader().getResource("Borrowed_Books.fxml"));
-            Scene scene = new Scene(BorrowedBooks, 725, 525);
+            Scene scene = new Scene(BorrowedBooks, 640, 400);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

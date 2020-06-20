@@ -34,7 +34,7 @@ private   int rez=0;
         try {
             Stage stage = (Stage) back.getScene().getWindow();
             Parent BackMenu = FXMLLoader.load(getClass().getClassLoader().getResource("tmenu.fxml"));
-            Scene scene = new Scene(BackMenu, 600, 400);
+            Scene scene = new Scene(BackMenu, 600, 280);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

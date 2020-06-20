@@ -106,7 +106,7 @@ public class ViewLibraryMenuTest extends ApplicationTest {
             e.printStackTrace();
         }
 
-        x = VLM.BorrowBook("The Memoirs of Sherlock Holmes","Arthur Conan Doyle","src\\main\\test\\resources\\LibraryBooks.json","src\\main\\test\\resources\\UsersBooks.json");
+        x = VLM.BorrowBook("March Battalion","Sven Hassel","src\\main\\test\\resources\\LibraryBooks.json","src\\main\\test\\resources\\UsersBooks.json");
         assertEquals(1,x);
 
         try (FileWriter file = new FileWriter("src\\main\\test\\resources\\LibraryBooks.json")) {

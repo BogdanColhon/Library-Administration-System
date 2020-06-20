@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddRemoveBooksMenu">
+<GridPane prefWidth="700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddRemoveBooksMenu">
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="40.0" />
       <RowConstraints minHeight="10.0" prefHeight="40.0" />
@@ -22,32 +22,47 @@
       <ColumnConstraints halignment="LEFT" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="550.0" />
    </columnConstraints>
    <children>
-      <Label text="Title:" textAlignment="CENTER" GridPane.rowIndex="1">
+      <Label text="Title:" textAlignment="CENTER" textFill="DARKSLATEGRAY" GridPane.rowIndex="1">
          <padding>
             <Insets left="10.0" />
-         </padding></Label>
-      <Label text="Author:" GridPane.rowIndex="2">
+         </padding>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label text="Author:" textFill="DARKSLATEGRAY" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="10.0" />
-         </GridPane.margin></Label>
-      <Label text="Publishing house:" GridPane.rowIndex="3">
+         </GridPane.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label text="Publishing house:" textFill="DARKSLATEGRAY" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="10.0" />
-         </GridPane.margin></Label>
-      <Label text="Date:" GridPane.rowIndex="4">
+         </GridPane.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label text="Year:" textFill="DARKSLATEGRAY" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="10.0" />
-         </GridPane.margin></Label>
-      <Label text="Category:" GridPane.rowIndex="5">
+         </GridPane.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label text="Category:" textFill="DARKSLATEGRAY" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="10.0" />
-         </GridPane.margin></Label>
-      <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField fx:id="authorField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="publishinghouseField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField fx:id="dateField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </GridPane.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="titleField" promptText="Title..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="authorField" promptText="Author..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="publishinghouseField" promptText="Publishing house..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="dateField" promptText="Year..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-      <ComboBox fx:id="selectcategory" promptText="Select a category" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <ComboBox fx:id="selectcategory" promptText="Select a category" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Adventure" />
@@ -57,11 +72,24 @@
          </items>
       </ComboBox>
 
-      <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="73.0" prefWidth="550.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <children>
-            <Button mnemonicParsing="false" onAction="#AddBookAction" text="Add Book" />
-            <Text fx:id="message" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+            <Text fx:id="message" fill="DARKSLATEGRAY" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="170.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
+            <Button mnemonicParsing="false" onAction="#AddBookAction" text="Add Book" textFill="DARKSLATEGRAY" />
             
+         </children>
+      </HBox>
+      <Label text="Add Book" textFill="CHOCOLATE" GridPane.columnIndex="1">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="84.0" prefWidth="150.0" GridPane.rowIndex="6">
+         <children>
+            <Button fx:id="back" mnemonicParsing="false" onAction="#Back" text="Back" />
          </children>
       </HBox>
    </children>

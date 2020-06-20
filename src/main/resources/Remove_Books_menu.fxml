@@ -4,24 +4,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RemoveBooksMenu">
+<AnchorPane prefHeight="324.0" prefWidth="402.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RemoveBooksMenu">
    <children>
-      <TextField fx:id="titleField" layoutX="68.0" layoutY="91.0" prefHeight="25.0" prefWidth="296.0" />
-      <TextField fx:id="authorField" layoutX="68.0" layoutY="147.0" prefHeight="25.0" prefWidth="296.0" />
-      <TextField fx:id="dateField" layoutX="68.0" layoutY="206.0" prefHeight="25.0" prefWidth="83.0" />
-      <Label layoutX="14.0" layoutY="95.0" text="Title" />
-      <Label layoutX="11.0" layoutY="151.0" text="Author" />
-      <Label layoutX="13.0" layoutY="210.0" text="Date" />
-      <Button layoutX="305.0" layoutY="259.0" mnemonicParsing="false" onAction="#RemoveBookAction" text="Remove" />
-      <Text fx:id="message" layoutX="68.0" layoutY="75.0" text="" wrappingWidth="220.5703125" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+      <TextField fx:id="titleField" layoutX="68.0" layoutY="91.0" prefHeight="25.0" prefWidth="296.0" promptText="Title..." />
+      <TextField fx:id="authorField" layoutX="68.0" layoutY="147.0" prefHeight="25.0" prefWidth="296.0" promptText="Author..." />
+      <TextField fx:id="dateField" layoutX="68.0" layoutY="206.0" prefHeight="25.0" prefWidth="83.0" promptText="Year..." />
+      <Label layoutX="14.0" layoutY="95.0" text="Title:" textFill="DARKSLATEGRAY">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="11.0" layoutY="151.0" text="Author:" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="13.0" layoutY="210.0" text="Year:" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Button layoutX="221.0" layoutY="259.0" mnemonicParsing="false" onAction="#RemoveBookAction" text="Remove" />
+      <Text fx:id="message" fill="DARKSLATEGRAY" layoutX="68.0" layoutY="75.0" text="" wrappingWidth="220.5703125" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font></Text>
       <Button fx:id="back" layoutX="68.0" layoutY="259.0" mnemonicParsing="false" onAction="#Back" text="Back" />
-      <Label layoutX="68.0" layoutY="14.0" prefHeight="45.0" prefWidth="250.0" text="Remove Book Menu">
+      <Label layoutX="68.0" layoutY="14.0" prefHeight="45.0" prefWidth="250.0" text="Remove Book Menu" textFill="CHOCOLATE">
          <font>
             <Font name="System Bold" size="21.0" />
          </font></Label>
-      <Button layoutX="380.0" layoutY="259.0" mnemonicParsing="false" onAction="#RemoveAllBooksAction" text="Remove All" />
+      <Button layoutX="301.0" layoutY="259.0" mnemonicParsing="false" onAction="#RemoveAllBooksAction" text="Remove All" />
    </children>
 </AnchorPane>

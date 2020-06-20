@@ -1,3 +1,27 @@
 .root {
-    -fx-background-color: #DCDCDC;
+    -fx-background-color: #ADD8E6;
 }
+
+.panou_stanga
+{
+    -fx-background-color: #D2691E;
+}
+
+.button {
+    -fx-text-fill: #2f4f4f;
+    -fx-background-color:#ff9e59;
+
+}
+.button:hover {
+    -fx-background-color:#D2691E;
+}
+
+.combo-box{
+    -fx-text-fill: #2f4f4f;
+    -fx-background-color:#ff9e59;
+}
+
+.combo-box:hover{
+    -fx-background-color:#D2691E;
+}
+

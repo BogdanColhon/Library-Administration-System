@@ -2,12 +2,16 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="525.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BorrowedBooks">
+<AnchorPane prefHeight="359.0" prefWidth="636.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BorrowedBooks">
    <children>
-      <ListView fx:id="Display" layoutX="50.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" />
-      <Button fx:id="back" layoutX="50.0" layoutY="470.0" mnemonicParsing="false" onAction="#Back" text="Back" />
-      <Label layoutX="50.0" layoutY="14.0" text="Borrowed Books:" />
-      <Button onAction="#DisplayBorrowedBooks" layoutX="580.0" layoutY="470.0" mnemonicParsing="false" prefWidth="70" text="Refresh" textAlignment="CENTER" />
+      <ListView fx:id="Display" layoutX="50.0" layoutY="50.0" prefHeight="219.0" prefWidth="538.0" />
+      <Button fx:id="back" layoutX="50.0" layoutY="293.0" mnemonicParsing="false" onAction="#Back" text="Back" />
+      <Label layoutX="50.0" layoutY="14.0" text="Borrowed Books:" textFill="CHOCOLATE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></Label>
+      <Button layoutX="518.0" layoutY="293.0" mnemonicParsing="false" onAction="#DisplayBorrowedBooks" prefWidth="70" text="Refresh" textAlignment="CENTER" />
    </children>
 </AnchorPane>

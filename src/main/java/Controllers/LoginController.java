@@ -72,7 +72,7 @@ public class LoginController {
                             try {
                                 Stage stage = (Stage) loginMessage.getScene().getWindow();
                                 Parent TeacherMenu = FXMLLoader.load(getClass().getClassLoader().getResource("tmenu.fxml"));
-                                Scene scene = new Scene(TeacherMenu, 600, 400);
+                                Scene scene = new Scene(TeacherMenu, 600, 280);
                                 stage.setScene(scene);
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -84,7 +84,7 @@ public class LoginController {
                                 try {
                                     Stage stage = (Stage) loginMessage.getScene().getWindow();
                                     Parent UserMenu = FXMLLoader.load(getClass().getClassLoader().getResource("umenu.fxml"));
-                                    Scene scene = new Scene(UserMenu, 600, 400);
+                                    Scene scene = new Scene(UserMenu, 600, 280);
                                     stage.setScene(scene);
                                 } catch (IOException e) {
                                     e.printStackTrace();

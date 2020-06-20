@@ -70,7 +70,7 @@ public class ViewUsers {
         try {
             Stage stage = (Stage) back.getScene().getWindow();
             Parent BackMenu = FXMLLoader.load(getClass().getClassLoader().getResource("tmenu.fxml"));
-            Scene scene = new Scene(BackMenu, 600, 400);
+            Scene scene = new Scene(BackMenu, 600, 280);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -112,7 +112,7 @@ public class ViewUsers {
                     int days = (int) (x / 86400);
                     String aux2 = aux1 + " - " + "Remain time: " + days + " days ";
                     Button notify = new Button("Notify");
-                    if (days > limitinf && days < limitsup) {
+                    if (days >= limitinf && days <= limitsup) {
                         afis.addAll(aux2, notify);
                         notify.setOnAction(new EventHandler<ActionEvent>() {
                             @Override

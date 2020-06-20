@@ -1,7 +1,5 @@
 package Controllers;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,35 +21,42 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.Observable;
 import java.util.concurrent.TimeUnit;
 
 public class ViewUsers {
     @FXML
     public Button back;
-    @FXML
-    private ListView display;
-    @FXML
-    private TextField searchfield;
-    @FXML private RadioButton RB1;
-    @FXML private RadioButton RB2;
-    @FXML private RadioButton RB3;
-    @FXML private RadioButton RB4;
+    @FXML ListView display;
+    @FXML TextField searchfield;
+    @FXML RadioButton RB1;
+    @FXML RadioButton RB2;
+    @FXML RadioButton RB3;
+    @FXML RadioButton RB4;
+    private String path="src/main/resources/UsersBooks.json";
+    private static long timpactual;
+    public static long currentTime() throws java.text.ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy MM dd HH mm ss");
+
+        Calendar current = Calendar.getInstance();
+        java.util.Date currentDate;
+        String current_date = format.format(current.getTime());
+        currentDate = format.parse(current_date);
+        timpactual=currentDate.getTime();
+        return timpactual;
+    }
 
 
-    public long calculateRemainTime(String borrowed_date) {
 
+    public long calculateRemainTime(String borrowed_date,long setDate) throws java.text.ParseException {//am adaugat parametrul setDate ca sa pot sa fac teste. aveam nevoie de o data fixa
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy MM dd HH mm ss");
 
         java.util.Date borrowedDate;
-        Calendar current = Calendar.getInstance();
-        java.util.Date currentDate;
-        String current_date = format.format(current.getTime());
+
         try {
             borrowedDate = format.parse(borrowed_date);
-            currentDate = format.parse(current_date);
-            long diffInMillies = currentDate.getTime() - borrowedDate.getTime();
+
+            long diffInMillies = setDate - borrowedDate.getTime();
             long diffence_in_seconds = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);
             // 14 Days in seconds: 1209600
             return 1209600 - diffence_in_seconds;
@@ -73,8 +78,8 @@ public class ViewUsers {
     }
 
     @FXML
-    public void ListUsers(String path, int limitinf, int limitsup, String search) throws IOException {
-        JSONArray list = new JSONArray();
+    public void ListUsers(String path, int limitinf, int limitsup, String search,long SetDate) throws IOException, java.text.ParseException {//am adaugat parametrul search ca sa pot sa fac teste in care caut dupa un string
+        JSONArray list = new JSONArray();                                                                                 //setDate a fost adaugat tot pentru a putea sa fac teste metodelor
         JSONParser parser1 = new JSONParser();
         try (Reader reader1 = new FileReader(path)) {
 
@@ -103,7 +108,7 @@ public class ViewUsers {
                 while (it3.hasNext()) {
                     JSONObject obj = (JSONObject) it3.next();
                     String aux1 = aux + " - " + obj.get("title").toString() + " - " + obj.get("author").toString();
-                    long x = calculateRemainTime(obj.get("time").toString());
+                    long x = calculateRemainTime(obj.get("time").toString(),SetDate);
                     int days = (int) (x / 86400);
                     String aux2 = aux1 + " - " + "Remain time: " + days + " days ";
                     Button notify = new Button("Notify");
@@ -112,7 +117,7 @@ public class ViewUsers {
                         notify.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent event) {
-                                obj.replace("message", "1");
+                                obj.replace("message", "1");//prin setarea pe 1 a fieldului message, programul va afisa un mesaj corespunzator userului
                                 try (Writer out = new FileWriter("src/main/resources/UsersBooks.json")) {
                                     out.write(list.toJSONString());
                                 } catch (IOException e) {
@@ -130,47 +135,86 @@ public class ViewUsers {
         }
     }
     public static String x="";
-    public void RB_all() throws IOException {
+    ///For tests
+    public void RB_all(String Path,String s,long time) throws IOException, java.text.ParseException {
         searchfield.clear();
-        ListUsers("src/main/resources/UsersBooks.json", -1000, 1000,x);
+        ListUsers(Path, -1000, 1000,s,time);
+        s="";
+
+    }
+
+    public void RB_good(String Path,String s,long time) throws IOException, java.text.ParseException {
+        searchfield.clear();
+        ListUsers(Path, 5, 14, s,time);
+        s="";
+    }
+
+    public void RB_atlimit(String Path,String s,long time) throws IOException, java.text.ParseException {
+        searchfield.clear();
+        ListUsers(Path, 0, 5, s,time);
+        s="";
+    }
+
+    public void RB_overdue(String Path,String s,long time) throws IOException, java.text.ParseException {
+        searchfield.clear();
+        ListUsers(Path, -1000, 0, s,time);
+        s="";
+    }
+
+// metode pentru programul principal, in care timpul este cel din interiorul clasei iar caracterul cautat este setat prin searchField.getText()
+    public void RB_allFINAL() throws IOException, java.text.ParseException {//cazurile in care se apasa doar pe radio button, fara a se da search dupa un caracter
+        currentTime();                                                      //Astfel, se vor afisa toate datele care respecta doar intervalul de timp
+        searchfield.clear();
+        RB_all(path,x,timpactual);
         x="";
 
     }
 
-    public void RB_good() throws IOException {
+    public void RB_goodFINAL() throws IOException, java.text.ParseException {
+        currentTime();
         searchfield.clear();
-        ListUsers("src/main/resources/UsersBooks.json", 5, 14, x);
+        RB_good(path,x,timpactual);
         x="";
     }
 
-    public void RB_atlimit() throws IOException {
+    public void RB_atlimitFINAL() throws IOException, java.text.ParseException {
+        currentTime();
         searchfield.clear();
-        ListUsers("src/main/resources/UsersBooks.json", 0, 5, x);
+      RB_atlimit(path,x,timpactual);
         x="";
     }
 
-    public void RB_overdue() throws IOException {
+    public void RB_overdueFINAL() throws IOException, java.text.ParseException {
+        currentTime();
         searchfield.clear();
-        ListUsers("src/main/resources/UsersBooks.json", -1000, 0, x);
+      RB_overdue(path,x,timpactual);
         x="";
     }
+//For test
 
-    public void searchAction() throws IOException {
-        x=searchfield.getText();
-        if(RB1.isSelected()) {
-            RB_all();
+    public void searchAction(String Path,String s,long time) throws IOException, java.text.ParseException {
+
+        if(RB1.isSelected()) {//cazurile in care se apasa pe radio button iar apoi se cauta dupa caracter in interiorul listei oferite de radiobutton
+            RB_all(Path,s,time);//se vor afisa datele care respecta atat intervalul de timp dat de radiobutton cat si caracterul dat de search
         }
         if(RB2.isSelected()) {
-            RB_good();
+            RB_good(Path,s,time);
         }
         if(RB3.isSelected()) {
-            RB_atlimit();
+            RB_atlimit(Path,s,time);
         }
         if(RB4.isSelected()) {
-            RB_overdue();
+            RB_overdue(Path,s,time);
         }
 
 
+    }
+//metoda pentru programul principal
+    public void searchActionFINAL() throws IOException, java.text.ParseException {
+        currentTime();
+        x=searchfield.getText();
+        searchAction(path,x,timpactual);
+        x="";
     }
 
 }

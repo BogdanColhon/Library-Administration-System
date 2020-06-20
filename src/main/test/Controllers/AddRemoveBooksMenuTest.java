@@ -1,5 +1,8 @@
 package Controllers;
 
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -8,23 +11,27 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.testfx.framework.junit.ApplicationTest;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import static org.junit.Assert.*;
 
-public class AddRemoveBooksMenuTest {
+public class AddRemoveBooksMenuTest extends ApplicationTest {
 
     AddRemoveBooksMenu ARBM;
     @Before
     public void setUp() throws Exception {
         ARBM = new AddRemoveBooksMenu();
+        ARBM.titleField=new TextField();
+        ARBM.authorField=new TextField();
+        ARBM.publishinghouseField=new TextField();
+        ARBM.dateField=new TextField();
+        ARBM.selectcategory=new ComboBox();
+        ARBM.message=new Text();
     }
 
     @After
@@ -111,4 +118,38 @@ public class AddRemoveBooksMenuTest {
         Assert.assertTrue(am_gasit==1);
 
     }
+
+    @Test
+    public void testNoFildsMassages() throws FileNotFoundException {
+
+        ARBM.titleField.setText("");
+        ARBM.AddBookAction();
+        assertEquals("Please type in a title!",ARBM.message.getText());
+
+        ARBM.titleField.setText("1");
+        ARBM.authorField.setText("");
+        ARBM.AddBookAction();
+        assertEquals("Please type in the author!",ARBM.message.getText());
+
+        ARBM.titleField.setText("1");
+        ARBM.authorField.setText("2");
+        ARBM.publishinghouseField.setText("");
+        ARBM.AddBookAction();
+        assertEquals("Please type in a publishing house!",ARBM.message.getText());
+
+        ARBM.titleField.setText("1");
+        ARBM.authorField.setText("2");
+        ARBM.publishinghouseField.setText("3");
+        ARBM.dateField.setText("");
+        ARBM.AddBookAction();
+        assertEquals("Please type in a date!",ARBM.message.getText());
+
+        ARBM.titleField.setText("1");
+        ARBM.authorField.setText("2");
+        ARBM.publishinghouseField.setText("3");
+        ARBM.dateField.setText("4");
+        ARBM.AddBookAction();
+        assertEquals("Please select a category!",ARBM.message.getText());
+    }
+
 }

@@ -24,40 +24,23 @@ public class LoginController {
 
     public static String UsernameGlobal = null;
     @FXML
-    private Text loginMessage;
+     Text loginMessage;
     @FXML
-    private PasswordField passwordField;
+     PasswordField passwordField;
     @FXML
-    private TextField usernameField;
+     TextField usernameField;
 
     @FXML
     public void initialize() {
 
     }
 
-    @FXML
-    private String algorithm="SHA-256";
-    private static String generateHash(String data, String algorithm) throws NoSuchAlgorithmException {
-        MessageDigest digest=MessageDigest.getInstance(algorithm);
-        digest.reset();
-        byte[] hash=digest.digest(data.getBytes());
-        return  bytesToStringHex(hash);
-    }
-    private final static char[] hexArray="0123456789ABCDEF".toCharArray();
-    private final static String bytesToStringHex(byte[] bytes) {
-        char[] hexChars=new char[bytes.length*2];
-        for(int j=0;j<bytes.length;j++)
-        {
-            int v=bytes[j] & 0xFF;
-            hexChars[j*2]=hexArray[v>>>4];
-            hexChars[j*2+1]=hexArray[v & 0x0F];
-        }
-        return new String(hexChars);
-    }
 
+    private String algorithm="SHA-256";
     public void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
+        Criptare x=new Criptare();
         UsernameGlobal = username;
 
         if (username == null || username.isEmpty()) {
@@ -83,8 +66,8 @@ public class LoginController {
                 //System.out.println(obj.get("username") + " - " + obj.get("password"));
                 if(obj.get("username").equals(username))
                 {
-
-                    if (obj.get("password").equals(generateHash(password,algorithm))) {
+                    //System.out.println(x.generateHash(password,algorithm));
+                    if (obj.get("password").equals(x.generateHash(password,algorithm))) {
                         if (obj.get("role").equals("librarian")) {
                             try {
                                 Stage stage = (Stage) loginMessage.getScene().getWindow();

@@ -34,7 +34,9 @@ public class BorrowedBooks implements Initializable {
     @FXML
     private Button back;
     @FXML
-    private ListView Display;
+    ListView Display;
+
+    protected String FilePath = "src\\main\\resources\\UsersBooks.json";
 
     public long calculateRemainTime(String borrowed_date){
 
@@ -59,14 +61,14 @@ public class BorrowedBooks implements Initializable {
     }
 
     @FXML
-    private void DisplayBorrowedBooks(){
+    public void DisplayBorrowedBooks(){
         String message = "PLEASE RETURN THIS BOOK !!!";
         String username = UsernameGlobal;
         Display.getItems().clear();
 
         JSONArray list1 = new JSONArray();
         JSONParser parser1 = new JSONParser();
-        try( Reader reader1 = new FileReader("src\\main\\resources\\UsersBooks.json")){
+        try( Reader reader1 = new FileReader(FilePath)){
 
             JSONArray jsonArray1 = (JSONArray) parser1.parse(reader1);
 

@@ -13,19 +13,19 @@
       </Label>
       <ListView fx:id="display" layoutX="54.0" layoutY="146.0" prefHeight="184.0" prefWidth="687.0" />
       <Button fx:id="back" layoutX="54.0" layoutY="346.0" mnemonicParsing="false" onAction="#Back" text="Back" />
-      <Button fx:id="search" layoutX="596.0" layoutY="85.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="25.0" prefWidth="145.0" text="Search" />
+      <Button fx:id="search" layoutX="596.0" layoutY="85.0" mnemonicParsing="false" onAction="#searchActionFINAL" prefHeight="25.0" prefWidth="145.0" text="Search" />
       <TextField fx:id="searchfield" layoutX="129.0" layoutY="85.0" prefHeight="25.0" prefWidth="461.0" promptText="Search user..." />
       <Label layoutX="52.0" layoutY="87.0" text="Username:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <RadioButton fx:id="RB1" layoutX="52.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_all" text="All">
+      <RadioButton fx:id="RB1" layoutX="52.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_allFINAL" text="All">
          <toggleGroup>
             <ToggleGroup fx:id="Selection" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="RB2" layoutX="119.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_good" text="Good" toggleGroup="$Selection" />
-      <RadioButton fx:id="RB3" layoutX="194.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_atlimit" text="At limit" toggleGroup="$Selection" />
-      <RadioButton fx:id="RB4" layoutX="283.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_overdue" text="Overdue" toggleGroup="$Selection" />
+      <RadioButton fx:id="RB2" layoutX="119.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_goodFINAL" text="Good" toggleGroup="$Selection" />
+      <RadioButton fx:id="RB3" layoutX="194.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_atlimitFINAL" text="At limit" toggleGroup="$Selection" />
+      <RadioButton fx:id="RB4" layoutX="283.0" layoutY="120.0" mnemonicParsing="false" onAction="#RB_overdueFINAL" text="Overdue" toggleGroup="$Selection" />
    </children>
 </AnchorPane>
